@@ -1,0 +1,56 @@
+body {
+    font-size: 1.3em;
+    font-family: "Times New Roman", Times, serif;
+    line-height: 1.1;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}
+
+h1 {
+    font-size: 1em;
+    text-align: center;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.content {
+    max-width:26em;
+    margin: auto;
+    margin-top: 1.5em;
+    padding:0 1em;
+}
+
+a.pagelink{
+    font-weight: bold;
+    text-decoration:none;
+    outline:none;
+    color:black;
+}
+
+a.pagelink:hover{
+    text-decoration:underline;
+}
+
+a.pagelink:active{
+    outline:none;
+}
+
+a.pagelink:visited{
+    text-decoration:none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 1.1em
+}
+
+ul > li:before {
+  content: "–";
+  position: absolute;
+  margin-left: -1.1em; 
+}

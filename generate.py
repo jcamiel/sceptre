@@ -2,20 +2,33 @@
 # coding: utf-8
 from pathlib import Path
 from markdown2 import markdown_path
+from string import Template
+import re
 
 
 class Page:
 
     def __init__(self, filename):
         self.src_filename = filename
-
-        name = Path(filename).stem + ".html"
-        self.dst_filename = Path(filename).parent.joinpath("output", name)
+        self.number = int(Path(filename).stem)
+        name = str(self.number) + ".html"
+        self.dst_filename = Path(filename).parent.joinpath("www", name)
 
     def to_html(self):
-        html = markdown_path(self.src_filename)
-        html = escape_accents(html)
+        body = markdown_path(self.src_filename)
+        body = self.post_process(body)
+
+        title = self.number
+        with open("template/page.html", "rt") as f:
+            template = f.read()
+
+        html = Template(template).substitute(title=title, body=body, page=self.number)
         return html
+
+    def post_process(self, txt):
+        txt = escape_accents(txt)
+        txt = re.sub('<a href="\d+">(\d+)</a>', r'<a href="\1" class="pagelink">\1</a>', txt)
+        return txt
 
     def write_html(self):
         with open(self.dst_filename, "wt") as f:
@@ -28,7 +41,7 @@ def escape_accents(html):
         "é": "&eacute;",
         "è": "&egrave;",
         "ê": "&ecirc;",
-        }
+    }
 
     for old, new in entities.items():
         html = html.replace(old, new)
@@ -36,7 +49,6 @@ def escape_accents(html):
 
 
 def generate_book():
-
     for f in Path(".").glob("*.md"):
         p = Page(filename=f)
         p.write_html()
