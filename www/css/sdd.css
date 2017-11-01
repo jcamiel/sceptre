@@ -1,5 +1,5 @@
 body {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-family: "Times New Roman", Times, serif;
     line-height: 1.1;
     -webkit-hyphens: auto;
@@ -21,26 +21,35 @@ p {
     max-width:26em;
     margin: auto;
     margin-top: 1.5em;
-    padding:0 1em;
+    padding:0 0.8em;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
-a.pagelink{
+.index {
+  margin-top: 1em; 
+}
+
+a.pagelink {
     font-weight: bold;
     text-decoration:none;
     outline:none;
     color:black;
 }
 
-a.pagelink:hover{
-    text-decoration:underline;
+.index a {
+    text-decoration:none;
+    outline:none;
+    color:black;
 }
 
-a.pagelink:active{
+a.pagelink:visited, .index a:visited  {
+    text-decoration: none;
     outline:none;
 }
 
-a.pagelink:visited{
-    text-decoration:none;
+a.pagelink:hover, .index a:hover {
+    text-decoration: underline;
 }
 
 ul {
@@ -54,3 +63,4 @@ ul > li:before {
   position: absolute;
   margin-left: -1.1em; 
 }
+

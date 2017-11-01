@@ -6,7 +6,7 @@ from string import Template
 import re
 
 
-class Page:
+class Paragraph:
 
     def __init__(self, filename):
         self.src_filename = filename
@@ -41,6 +41,8 @@ def escape_accents(html):
         "é": "&eacute;",
         "è": "&egrave;",
         "ê": "&ecirc;",
+        "'": "&rsquo;",
+        "...": "&hellip;",
     }
 
     for old, new in entities.items():
@@ -50,7 +52,7 @@ def escape_accents(html):
 
 def generate_book():
     for f in Path(".").glob("*.md"):
-        p = Page(filename=f)
+        p = Paragraph(filename=f)
         p.write_html()
 
 
