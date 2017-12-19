@@ -12,7 +12,7 @@ class Paragraph:
         self.src_filename = filename
         self.number = int(Path(filename).stem)
         name = str(self.number) + ".html"
-        self.dst_filename = Path(filename).parent.joinpath("www", name)
+        self.dst_filename = Path(filename).parent.parent.joinpath("www", name)
 
     def to_html(self):
         body = markdown_path(self.src_filename)
@@ -51,7 +51,7 @@ def escape_accents(html):
 
 
 def generate_book():
-    for f in Path(".").glob("*.md"):
+    for f in Path(".").glob("paragraphes/*.md"):
         p = Paragraph(filename=f)
         p.write_html()
 
