@@ -26,7 +26,7 @@ class Paragraph:
         return html
 
     def post_process(self, txt):
-        txt = escape_accents(txt)
+        txt = sanetize_html(txt)
         txt = re.sub('<a href="\d+">(\d+)</a>', r'<a href="\1" class="pagelink">\1</a>', txt)
         return txt
 
@@ -35,14 +35,21 @@ class Paragraph:
             f.write(self.to_html())
 
 
-def escape_accents(html):
+def sanetize_html(html):
     entities = {
         "à": "&agrave;",
+        "â": "&acirc;",
         "é": "&eacute;",
         "è": "&egrave;",
         "ê": "&ecirc;",
+        "î": "&icirc;",
+        "ô": "&ocirc;",
+        "ù": "&ugrave;",
+        "û": "&ucirc;",
         "'": "&rsquo;",
         "...": "&hellip;",
+        " ?": "&nbsp;?",
+        " :": "&nbsp;:"
     }
 
     for old, new in entities.items():

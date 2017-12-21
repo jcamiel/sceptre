@@ -11,10 +11,12 @@ h1 {
     font-size: 1em;
     text-align: center;
     margin: 0;
+    margin-bottom: 0.75em;
 }
 
 p {
     margin: 0;
+    margin-bottom: 1em;
 }
 
 .content {
