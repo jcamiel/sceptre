@@ -1,6 +1,6 @@
 # Description
 
-Projet pour génerer le site <http://le-sceptre-de-la-destruction.net>
+Projet pour génerer le site <https://le-sceptre-de-la-destruction.fr>
 
 # Installation
 
